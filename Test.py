@@ -1,8 +1,3 @@
-"""
-from pylab import *
-plot([[1,2,3],[1,4,9]])
-show()
-"""
 import numpy as np
 import matplotlib.pyplot as plt
 from pylab import *
@@ -16,10 +11,9 @@ df_ger12 = df_ger[df_ger['year'] == 2012]
 print df_ger12
 
 #get the population of each year
-df_pop = df_ger['e_pop_num']
-print df_pop
-print '-------'
-ls_values = df_pop.values
+series_pop = df_ger['e_pop_num']
+
+ls_values = series_pop.values
 
 #series = pd.Series(data = ls_values, index=pd.date_range('1/1/2000', periods=23))
 series = pd.Series(data = ls_values, name='Population', index=pd.date_range(start='1990', periods=23, freq='A' , name='Years'))
