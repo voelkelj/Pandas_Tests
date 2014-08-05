@@ -12,18 +12,25 @@ df = df[df['year'] == 2012]#get only data of 2012
 df_by_pop = df.sort(columns='e_pop_num', ascending=False)#sort df by population
 print df_by_pop[:5]
 
-df_country_pop = df_by_pop[['country', 'e_pop_num']][:5]
+#df_country_pop = df_by_pop[['country', 'e_pop_num']][:5]
+df_country_pop = df_by_pop[['e_pop_num', 'country']][:5]
 #df_country_pop.hist()
 #show()
 print '-'*30
-print type(df_country_pop)
+print df_country_pop.count
 print '-'*30
-index = df_country_pop['country']
+s_index = df_country_pop['country'].values
+print 'index: '+str(s_index)
 #df_country_pop.plot(kind='bar', title='5 Most populous countries', legend=True)
-df_country_pop.plot(kind='bar', use_index=False, title='5 Most populous countries', legend=True)
+
+
+ax = df_country_pop.plot(kind='bar', use_index=False, title='5 Most populous countries', legend=True, sharex=False)
+ax.set_xticklabels(s_index)
 show()
 
-print df_country_pop
 
-df_country_pop.plot(kind='pie', subplots=True)
+
+df_country_pop.plot(kind='pie', subplots=True)#works
+
+
 show()
