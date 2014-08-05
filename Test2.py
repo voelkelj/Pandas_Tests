@@ -21,12 +21,16 @@ print df_country_pop.count
 print '-'*30
 s_index = df_country_pop['country'].values
 print 'index: '+str(s_index)
-#df_country_pop.plot(kind='bar', title='5 Most populous countries', legend=True)
 
+df_country_pop.columns = ['Population', 'country']
 
-ax = df_country_pop.plot(kind='bar', use_index=False, title='5 Most populous countries', legend=True, sharex=False)
+#ax = df_country_pop.plot(kind='bar', use_index=False, title='5 Most populous countries', legend=True, sharex=False)
+ax = df_country_pop.plot(kind='bar', use_index=False, title='5 Most populous countries')
 ax.set_xticklabels(s_index)
+
 show()
+fig = ax.get_figure()
+fig.savefig("Population_bars.pdf")
 
 
 
